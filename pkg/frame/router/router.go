@@ -2,46 +2,65 @@ package router
 
 import (
 	"context"
+	"errors"
+	"github.com/charmbracelet/log"
 	"github.com/dida-social/dida-server/pkg/frame"
 	"github.com/gin-gonic/gin"
+	"net/http"
+	"strconv"
+	"time"
 )
 
 type Router struct {
-	eg *gin.Engine
+	name   string
+	port   int
+	router *gin.Engine
+	serv   *http.Server
 }
 
-func (r *Router) RegisterRouter(method string, path string, handler gin.HandlerFunc) {
-	//TODO implement me
-	panic("implement me")
+func (r *Router) RegisterHandler(h frame.Handler) {
+	h.RegisterRouter(r.router)
 }
-
-//type Handler[Req, Resp any] func(req Req) (resp Resp)
-//
-//func (r *Router) RegisterRouter(method string, path string, handler Handler) {
-//	r.eg.Handle(method, path, func(c *gin.Context) {
-//
-//	})
-//}
 
 func (r *Router) Name() string {
-	//TODO implement me
-	panic("implement me")
+	return r.name
 }
 
 func (r *Router) Run(ctx context.Context) error {
-	//TODO implement me
-	panic("implement me")
+
+	go func() {
+		// 服务连接
+		if err := r.serv.ListenAndServe(); err != nil &&
+			!errors.Is(err, http.ErrServerClosed) {
+			log.Fatalf("listen: %s\n", err)
+		}
+	}()
+
+	return nil
 }
 
 func (r *Router) Close() error {
-	//TODO implement me
-	panic("implement me")
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
+	if err := r.serv.Shutdown(ctx); err != nil {
+		log.Fatal("server shutdown:", err)
+	}
+	log.Info("server exiting")
+	return nil
 }
 
 var _ frame.RouterModule = (*Router)(nil)
 
-func NewRouter() *Router {
+func NewRouter(name string, port int) *Router {
+	router := gin.Default()
+	serv := &http.Server{
+		Addr:    ":" + strconv.Itoa(port),
+		Handler: router,
+	}
 	return &Router{
-		eg: gin.Default(),
+		name:   name,
+		port:   port,
+		router: router,
+		serv:   serv,
 	}
 }

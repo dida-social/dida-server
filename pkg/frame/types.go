@@ -29,11 +29,15 @@ type AppModule interface {
 
 type RouterModule interface {
 	Module
-	RegisterRouter(method string, path string, handler gin.HandlerFunc)
+	RegisterHandler(h Handler)
 }
 
 type Module interface {
 	Name() string
 	Starter
 	io.Closer
+}
+
+type Handler interface {
+	RegisterRouter(eg *gin.Engine)
 }
