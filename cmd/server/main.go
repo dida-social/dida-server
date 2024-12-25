@@ -2,7 +2,8 @@ package main
 
 import (
 	"context"
-	"github.com/dida-social/dida-server/internal/handler/user"
+	userhandler "github.com/dida-social/dida-server/internal/handler/user"
+	usersrv "github.com/dida-social/dida-server/internal/service/user"
 	"github.com/dida-social/dida-server/pkg/frame/app"
 	"github.com/dida-social/dida-server/pkg/frame/router"
 	"time"
@@ -19,7 +20,8 @@ func main() {
 	// router module
 	rt := router.NewRouter("router", 8081)
 	// register user handler
-	rt.RegisterHandler(user.NewHandler("user"))
+	userSrv := usersrv.NewUserService()
+	rt.RegisterHandler(userhandler.NewHandler("user", userSrv))
 
 	// register modules
 	if err = server.RegisterModules(context.Background(), rt); err != nil {
