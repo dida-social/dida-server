@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package user_v1;
+
+message UserRegisterReq {
+  string name         = 1;
+  string password     = 2;
+  string verify_code  = 3;
+}
+
+message UserRegisterResp {
+  string  name  = 1;
+  int64   id    = 2;
+  string  token = 3;
+}
+
+service UserLogin {
+  rpc register(UserRegisterReq) returns (UserRegisterResp);
+}
