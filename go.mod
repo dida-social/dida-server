@@ -5,6 +5,8 @@ go 1.23.4
 require (
 	github.com/charmbracelet/log v0.4.0
 	github.com/gin-gonic/gin v1.10.0
+	github.com/golang/protobuf v1.5.0
+	google.golang.org/protobuf v1.34.1
 )
 
 require (
@@ -41,6 +43,5 @@ require (
 	golang.org/x/net v0.25.0 // indirect
 	golang.org/x/sys v0.20.0 // indirect
 	golang.org/x/text v0.15.0 // indirect
-	google.golang.org/protobuf v1.34.1 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
