@@ -5,7 +5,7 @@ go 1.23.4
 require (
 	github.com/charmbracelet/log v0.4.0
 	github.com/gin-gonic/gin v1.10.0
-	github.com/golang/protobuf v1.5.0
+	github.com/lyft/protoc-gen-star/v2 v2.0.4
 	google.golang.org/protobuf v1.34.1
 )
 
@@ -35,6 +35,7 @@ require (
 	github.com/muesli/termenv v0.15.2 // indirect
 	github.com/pelletier/go-toml/v2 v2.2.2 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
+	github.com/spf13/afero v1.3.3 // indirect
 	github.com/twitchyliquid64/golang-asm v0.15.1 // indirect
 	github.com/ugorji/go/codec v1.2.12 // indirect
 	golang.org/x/arch v0.8.0 // indirect
