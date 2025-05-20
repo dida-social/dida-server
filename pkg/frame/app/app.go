@@ -34,7 +34,7 @@ func (a *App) Name() string {
 
 func (a *App) Run(ctx context.Context) error {
 	ch := make(chan os.Signal, 1)
-	signal.Notify(ch, syscall.SIGINT /*ctrl-c*/, syscall.SIGSTOP, /*ctrl-z*/
+	signal.Notify(ch, syscall.SIGINT /*ctrl-c*/, syscall.SIGQUIT, /*ctrl-/*/
 		syscall.SIGKILL, syscall.SIGTERM)
 
 	// TODO: start modules
@@ -64,7 +64,7 @@ func (a *App) Run(ctx context.Context) error {
 					return errors.New(sb.String())
 				}
 				return nil
-			case syscall.SIGSTOP:
+			case syscall.SIGQUIT:
 				// start online profiling
 				continue
 			}

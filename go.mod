@@ -5,8 +5,8 @@ go 1.23.4
 require (
 	github.com/charmbracelet/log v0.4.0
 	github.com/gin-gonic/gin v1.10.0
-	github.com/lyft/protoc-gen-star/v2 v2.0.4
-	google.golang.org/protobuf v1.34.1
+	google.golang.org/grpc v1.72.1
+	google.golang.org/protobuf v1.36.5
 )
 
 require (
@@ -35,14 +35,14 @@ require (
 	github.com/muesli/termenv v0.15.2 // indirect
 	github.com/pelletier/go-toml/v2 v2.2.2 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
-	github.com/spf13/afero v1.3.3 // indirect
 	github.com/twitchyliquid64/golang-asm v0.15.1 // indirect
 	github.com/ugorji/go/codec v1.2.12 // indirect
 	golang.org/x/arch v0.8.0 // indirect
-	golang.org/x/crypto v0.23.0 // indirect
+	golang.org/x/crypto v0.33.0 // indirect
 	golang.org/x/exp v0.0.0-20231006140011-7918f672742d // indirect
-	golang.org/x/net v0.25.0 // indirect
-	golang.org/x/sys v0.20.0 // indirect
-	golang.org/x/text v0.15.0 // indirect
+	golang.org/x/net v0.35.0 // indirect
+	golang.org/x/sys v0.30.0 // indirect
+	golang.org/x/text v0.22.0 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20250218202821-56aae31c358a // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )

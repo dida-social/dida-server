@@ -1,0 +1,10 @@
+GET http://localhost:8081/v1/user/register
+
+
+
+###
+
+GET http://localhost:8081/v1/user/login?name=zhangsan&password=123456
+
+
+###

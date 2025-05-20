@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package common.v1;
+
+import "google/protobuf/any.proto";
+
+option go_package = "common;common";
+
+message Response {
+  int32 code = 1;
+  string msg = 2;
+  google.protobuf.Any data = 3;
+}
